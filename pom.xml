@@ -108,6 +108,45 @@
         <finalName>${project.artifactId}##${project.version}</finalName>
         <plugins>
             <plugin>
+                <groupId>cz.habarta.typescript-generator</groupId>
+                <artifactId>typescript-generator-maven-plugin</artifactId>
+                <version>3.1.1185</version>
+                <executions>
+                    <execution>
+                        <id>generate</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <phase>process-classes</phase>
+                    </execution>
+                </executions>
+                <configuration>
+                    <jsonLibrary>jackson2</jsonLibrary>
+                    <npmName>@aotter/openrtb-types</npmName>
+                    <npmVersion>0.0.1</npmVersion>
+                    <mapMap>asRecord</mapMap>
+                    <generateNpmPackageJson>true</generateNpmPackageJson>
+                    <!-- <outputFileType>implementationFile</outputFileType> -->
+                    <!-- <mapClasses>asClasses</mapClasses> -->
+                    <!-- <extensionsWithConfiguration>
+                        <extension>
+                            <className>cz.habarta.typescript.generator.ext.JsonDeserializationExtension</className>
+                            <configuration>
+                                <useJsonDeserializationInJaxrsApplicationClient>true</useJsonDeserializationInJaxrsApplicationClient>
+                            </configuration>
+                        </extension>
+                    </extensionsWithConfiguration> -->
+                    <classes>
+                        <class>net.media.openrtb3.OpenRTBWrapper3_X</class>
+                    </classes>
+                    <customTypeNaming>net.media.openrtb3.OpenRTBWrapper3_X:OpenRTB</customTypeNaming>
+                    <outputKind>module</outputKind>
+                    <generateInfoJson>true</generateInfoJson>
+                    <optionalProperties>useLibraryDefinition</optionalProperties>
+                    <outputFile>./target/openrtb-types/openrtb.d.ts</outputFile>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.5.3</version>
@@ -280,6 +319,11 @@
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>2.13.4</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
