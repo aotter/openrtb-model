@@ -26,7 +26,7 @@
     <url>https://github.com/InteractiveAdvertisingBureau/openrtb-model</url>
 
     <properties>
-        <jackson.version>2.9.8</jackson.version>
+        <jackson.version>2.14.2</jackson.version>
         <dropwizard.version>1.1.0</dropwizard.version>
         <guice.version>3.0</guice.version>
         <tomcat.version>9.0.0.M6</tomcat.version>
@@ -122,10 +122,7 @@
                 </executions>
                 <configuration>
                     <jsonLibrary>jackson2</jsonLibrary>
-                    <npmName>@aotter/openrtb-types</npmName>
-                    <npmVersion>0.0.1</npmVersion>
                     <mapMap>asRecord</mapMap>
-                    <generateNpmPackageJson>true</generateNpmPackageJson>
                     <!-- <outputFileType>implementationFile</outputFileType> -->
                     <!-- <mapClasses>asClasses</mapClasses> -->
                     <!-- <extensionsWithConfiguration>
@@ -141,9 +138,10 @@
                     </classes>
                     <customTypeNaming>net.media.openrtb3.OpenRTBWrapper3_X:OpenRTB</customTypeNaming>
                     <outputKind>module</outputKind>
-                    <generateInfoJson>true</generateInfoJson>
                     <optionalProperties>useLibraryDefinition</optionalProperties>
                     <outputFile>./target/openrtb-types/openrtb.d.ts</outputFile>
+                    <noTslintDisable>true</noTslintDisable>
+                    <noEslintDisable>true</noEslintDisable>
                 </configuration>
             </plugin>
             <plugin>
